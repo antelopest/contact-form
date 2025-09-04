@@ -75,7 +75,6 @@
               aria-describedby="query-type-error" />
             Support Request
           </label>
-
           <div id="query-type-error" class="contact__form-error"></div>
         </fieldset>
         <div class="contact__form-group">
@@ -92,17 +91,19 @@
           <div id="message-error" class="contact__form-error"></div>
         </div>
         <div class="contact__form-group">
-          <label for="agree" class="contact__form-label">
+          <div class="contact__form-group--row">
             <input
-              id="agree"
+              id="consent"
               type="checkbox"
               class="contact__form-checkbox"
               required
               aria-describedby="agree-error" />
-            I consent to being contacted by the team.
-            <span class="contact__form-label--required">*</span>
-          </label>
-          <div id="agree-error" class="contact__form-error"></div>
+            <label for="consent" class="contact__form-label">
+              I consent to being contacted by the team.
+              <span class="contact__form-label--required">*</span>
+            </label>
+          </div>
+          <div id="consent-error" class="contact__form-error"></div>
         </div>
         <button type="submit" class="contact__form-submit">Submit</button>
       </form>

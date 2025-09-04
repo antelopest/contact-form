@@ -52,9 +52,8 @@ body {
 .contact {
   border-radius: 1rem;
   background-color: var(--color-white);
-  width: 375px;
+  width: 400px;
   padding: 1.4rem;
-
   display: flex;
   gap: 2rem;
   flex-direction: column;
@@ -69,13 +68,21 @@ body {
 .contact__form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .contact__form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.contact__form-group--row {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: start;
+  align-items: center;
 }
 
 .contact__form-label {
@@ -85,6 +92,7 @@ body {
 }
 
 .contact__form-input {
+  font-family: var(--font-family), sans-serif;
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid var(--color-grey-500);
@@ -113,6 +121,12 @@ body {
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid var(--color-grey-500);
+}
+
+.contact__form-error {
+  color: var(--color-red);
+  font-size: 0.8rem;
+  height: 0.8rem;
 }
 
 .contact__form-submit {
