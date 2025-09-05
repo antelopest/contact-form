@@ -23,7 +23,12 @@ document.querySelector('.contact__form').addEventListener('submit', (e) => {
   }
 
   const email = document.getElementById('email').value.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email) {
+    document.getElementById('email-error').textContent =
+      'This field is required';
+    isValid = false;
+  } else if (!emailRegex.test(email)) {
     document.getElementById('email-error').textContent =
       'Please enter a valid email address';
     isValid = false;
@@ -49,7 +54,10 @@ document.querySelector('.contact__form').addEventListener('submit', (e) => {
       'To submit this form, please consent to being contacted';
     isValid = false;
   }
+
   if (isValid) {
+    let heading = 'Message Sent!';
+    let message = "Thanks for completing the form. We'll be in touch soon!";
     alert('Form submitted!');
   }
 });

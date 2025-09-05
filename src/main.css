@@ -95,13 +95,32 @@ body {
   font-family: var(--font-family), sans-serif;
   padding: 1rem;
   border-radius: 0.5rem;
+  cursor: pointer;
   border: 1px solid var(--color-grey-500);
+}
+
+.contact__form-input:hover {
+  border: 1px solid var(--color-green-600);
+}
+
+.contact__form-input:focus {
+  border: 1px solid var(--color-green-600);
+  outline: none;
 }
 
 .contact__form-textarea {
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid var(--color-grey-500);
+}
+
+.contact__form-textarea:hover {
+  border: 1px solid var(--color-green-600);
+}
+
+.contact__form-textarea:focus {
+  border: 1px solid var(--color-green-600);
+  outline: none;
 }
 
 .contact__form-fieldset {
@@ -121,6 +140,14 @@ body {
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid var(--color-grey-500);
+}
+
+.contact__form-label--radio:hover {
+  border: 1px solid var(--color-green-600);
+}
+
+.contact__form-label--radio:focus {
+  border: 1px solid var(--color-green-600);
 }
 
 .contact__form-error {
