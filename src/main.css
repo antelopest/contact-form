@@ -94,6 +94,7 @@ body {
 .contact__form-input {
   font-family: var(--font-family), sans-serif;
   padding: 1rem;
+  font: inherit;
   border-radius: 0.5rem;
   cursor: pointer;
   border: 1px solid var(--color-grey-500);
@@ -149,6 +150,7 @@ body {
   height: 0.6rem;
   width: 0.6rem;
   outline-offset: 2px;
+  margin: 0 1rem 0 0.5rem;
   outline: 2px solid var(--color-grey-500);
   background-color: var(--color-white);
 }
