@@ -55,6 +55,8 @@ document.querySelector('.contact__form').addEventListener('submit', (e) => {
     isValid = false;
   }
 
+  document.getElementById('successModal').style.display = 'flex';
+
   if (isValid) {
     let heading = 'Message Sent!';
     let message = "Thanks for completing the form. We'll be in touch soon!";

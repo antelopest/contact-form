@@ -189,3 +189,37 @@ body {
   cursor: pointer;
   letter-spacing: 0.05rem;
 }
+
+.modal {
+  display: none; /* Скрыто по умолчанию */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /*background-color: rgba(0, 0, 0, 0.5); !* Полупрозрачный фон *!*/
+  z-index: 1000;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.modal__container {
+  padding: 2rem;
+  display: flex;
+  border-radius: 0.5rem;
+  margin: 3rem 0;
+  width: 475px;
+  gap: 1rem;
+  background-color: var(--color-900);
+}
+
+.modal_heading {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  color: var(--color-white);
+}
+
+.modal__content {
+  color: var(--color-white);
+}
