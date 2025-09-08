@@ -1,4 +1,18 @@
-document.querySelector('.contact__form').addEventListener('submit', (e) => {
+const modalEl = document.getElementById('successModal');
+
+modalEl.addEventListener('click', (e) => {
+  modalEl.style.display = 'none';
+});
+
+const firstNameEl = document.getElementById('firstName');
+const lastNameEl = document.getElementById('lastName');
+const emailEl = document.getElementById('email');
+const messageEl = document.getElementById('message');
+const consentEl = document.getElementById('consent');
+
+const contactFormEl = document.querySelector('.contact__form');
+
+contactFormEl.addEventListener('submit', (e) => {
   e.preventDefault();
 
   /* Reset errors */
@@ -6,29 +20,51 @@ document.querySelector('.contact__form').addEventListener('submit', (e) => {
     error.textContent = '';
   });
 
+  /* Reset classes */
+  document.querySelectorAll('.contact__form-input').forEach((input) => {
+    input.classList.remove('contact__form-input--error');
+  });
+
+  /* Reset classes for textarea */
+  document.querySelectorAll('.contact__form-textarea').forEach((textarea) => {
+    textarea.classList.remove('contact__form-textarea--error');
+  });
+
   let isValid = true;
 
-  const firstName = document.getElementById('firstName').value.trim();
+  const firstName = firstNameEl.value.trim();
   if (!firstName) {
+    document
+      .getElementById('firstName')
+      .classList.add('contact__form-input--error');
     document.getElementById('first-name-error').textContent =
       'This field is required';
     isValid = false;
   }
 
-  const lastName = document.getElementById('lastName').value.trim();
+  const lastName = lastNameEl.value.trim();
   if (!lastName) {
+    document
+      .getElementById('lastName')
+      .classList.add('contact__form-input--error');
     document.getElementById('last-name-error').textContent =
       'This field is required';
     isValid = false;
   }
 
-  const email = document.getElementById('email').value.trim();
+  const email = emailEl.value.trim();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email) {
+    document
+      .getElementById('email')
+      .classList.add('contact__form-input--error');
     document.getElementById('email-error').textContent =
       'This field is required';
     isValid = false;
   } else if (!emailRegex.test(email)) {
+    document
+      .getElementById('email')
+      .classList.add('contact__form-input--error');
     document.getElementById('email-error').textContent =
       'Please enter a valid email address';
     isValid = false;
@@ -41,25 +77,30 @@ document.querySelector('.contact__form').addEventListener('submit', (e) => {
     isValid = false;
   }
 
-  const message = document.getElementById('message').value.trim();
+  const message = messageEl.value.trim();
   if (!message) {
+    document
+      .getElementById('message')
+      .classList.add('contact__form-textarea--error');
     document.getElementById('message-error').textContent =
       'This field is required';
     isValid = false;
   }
 
-  const consent = document.getElementById('consent').checked;
+  const consent = consentEl.checked;
   if (!consent) {
     document.getElementById('consent-error').textContent =
       'To submit this form, please consent to being contacted';
     isValid = false;
   }
 
-  document.getElementById('successModal').style.display = 'flex';
-
   if (isValid) {
-    let heading = 'Message Sent!';
-    let message = "Thanks for completing the form. We'll be in touch soon!";
-    alert('Form submitted!');
+    modalEl.style.display = 'flex';
+
+    contactFormEl.reset();
+
+    setTimeout(() => {
+      modalEl.style.display = 'none';
+    }, 3000);
   }
 });

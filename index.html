@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact Form</title>
 
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./src/assets/favicon/favicon-32x32.png" />
+
     <link rel="stylesheet" href="./src/main.css" />
   </head>
   <body>
     <main class="contact">
       <h1 class="contact__title">Contact Us</h1>
       <form class="contact__form" novalidate>
-        <div class="contact__form-group">
+        <div class="contact__form-group contact__form-group--first-name">
           <label for="firstName" class="contact__form-label">
             First Name <span class="contact__form-label--required">*</span>
           </label>
@@ -24,7 +29,7 @@
             aria-describedby="first-name-error" />
           <div id="first-name-error" class="contact__form-error"></div>
         </div>
-        <div class="contact__form-group">
+        <div class="contact__form-group contact__form-group--last-name">
           <label for="lastName" class="contact__form-label">
             Last Name <span class="contact__form-label--required">*</span>
           </label>
@@ -37,7 +42,7 @@
             aria-describedby="last-name-error" />
           <div id="last-name-error" class="contact__form-error"></div>
         </div>
-        <div class="contact__form-group">
+        <div class="contact__form-group contact__form-group--email">
           <label for="email" class="contact__form-label">
             Email Address <span class="contact__form-label--required">*</span>
           </label>
@@ -50,34 +55,37 @@
             aria-describedby="email-error" />
           <div id="email-error" class="contact__form-error"></div>
         </div>
-        <fieldset class="contact__form-fieldset">
+        <fieldset class="contact__form-fieldset" id="queryTypeRadioGroup">
           <legend class="contact__form-legend">
             Query Type <span class="contact__form-label--required">*</span>
           </legend>
 
-          <label class="contact__form-label--radio">
-            <input
-              type="radio"
-              name="queryType"
-              value="general"
-              class="contact__form-radio"
-              required
-              aria-describedby="query-type-error" />
+          <input
+            id="queryTypeGeneral"
+            type="radio"
+            name="queryType"
+            value="general"
+            class="contact__form-radio"
+            required
+            aria-describedby="query-type-error" />
+          <label for="queryTypeGeneral" class="contact__form-label--radio">
             General Enquiry
           </label>
-          <label class="contact__form-label--radio">
-            <input
-              type="radio"
-              name="queryType"
-              value="support"
-              class="contact__form-radio"
-              required
-              aria-describedby="query-type-error" />
+
+          <input
+            id="queryTypeSupport"
+            type="radio"
+            name="queryType"
+            value="support"
+            class="contact__form-radio"
+            required
+            aria-describedby="query-type-error" />
+          <label for="queryTypeSupport" class="contact__form-label--radio">
             Support Request
           </label>
           <div id="query-type-error" class="contact__form-error"></div>
         </fieldset>
-        <div class="contact__form-group">
+        <div class="contact__form-group contact__form-group--message">
           <label for="message" class="contact__form-label">
             Message <span class="contact__form-label--required">*</span>
           </label>
@@ -90,7 +98,7 @@
             aria-describedby="message-error"></textarea>
           <div id="message-error" class="contact__form-error"></div>
         </div>
-        <div class="contact__form-group">
+        <div class="contact__form-group contact__form-group--consent">
           <div class="contact__form-group--row">
             <input
               id="consent"
@@ -111,7 +119,7 @@
 
     <div id="successModal" class="modal">
       <div class="modal__container">
-        <div class="modal_heading">
+        <div class="modal__heading">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"

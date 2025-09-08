@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Karla';
-  src: url('./asserts/fonts/Karla/Karla-Regular.ttf') format('truetype');
+  src: url('./assets/fonts/Karla/Karla-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: 'Karla';
-  src: url('./asserts/fonts/Karla/Karla-Bold.ttf') format('truetype');
+  src: url('./assets/fonts/Karla/Karla-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -89,6 +89,7 @@ body {
   font-size: 1rem;
   font-weight: var(--font-weight-regular);
   color: var(--color-900);
+  cursor: pointer;
 }
 
 .contact__form-input {
@@ -100,13 +101,14 @@ body {
   border: 1px solid var(--color-grey-500);
 }
 
-.contact__form-input:hover {
-  border: 1px solid var(--color-green-600);
-}
-
+.contact__form-input:hover,
 .contact__form-input:focus {
   border: 1px solid var(--color-green-600);
   outline: none;
+}
+
+.contact__form-input--error {
+  border: 1px solid var(--color-red);
 }
 
 .contact__form-textarea {
@@ -124,6 +126,10 @@ body {
   outline: none;
 }
 
+.contact__form-textarea--error {
+  border: 1px solid var(--color-red);
+}
+
 .contact__form-fieldset {
   border: none;
 
@@ -138,26 +144,52 @@ body {
 }
 
 .contact__form-label--radio {
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 3rem;
   border-radius: 0.5rem;
   border: 1px solid var(--color-grey-500);
   cursor: pointer;
+  position: relative;
+}
+
+.contact__form-label--radio::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  z-index: 10000;
+  border-radius: 50%;
+  height: 0.6rem;
+  width: 0.6rem;
+  left: 1rem;
+  top: 1.3rem;
+  outline-offset: 2px;
+  outline: 1px solid var(--color-grey-500);
+  background-color: var(--color-white);
 }
 
 .contact__form-radio {
+  display: none;
   appearance: none;
   border-radius: 50%;
   height: 0.6rem;
   width: 0.6rem;
   outline-offset: 2px;
   margin: 0 1rem 0 0.5rem;
-  outline: 2px solid var(--color-grey-500);
+  outline: 1px solid var(--color-grey-500);
   background-color: var(--color-white);
 }
 
 .contact__form-radio:checked {
   background-color: var(--color-green-600);
-  outline: 2px solid var(--color-green-600);
+  outline: 1px solid var(--color-green-600);
+}
+
+.contact__form-radio:checked + .contact__form-label--radio {
+  background-color: var(--color-green-200);
+}
+
+.contact__form-radio:checked + .contact__form-label--radio::before {
+  background-color: var(--color-green-600);
+  outline: 1px solid var(--color-green-600);
 }
 
 .contact__form-label--radio:hover {
@@ -168,14 +200,15 @@ body {
   border: 1px solid var(--color-green-600);
 }
 
-.contact__form-label--radio:checked {
-  background-color: red;
-}
-
 .contact__form-error {
   color: var(--color-red);
   font-size: 0.8rem;
   height: 0.8rem;
+}
+
+.contact__form-checkbox {
+  cursor: pointer;
+  accent-color: var(--color-green-600);
 }
 
 .contact__form-submit {
@@ -197,29 +230,85 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  /*background-color: rgba(0, 0, 0, 0.5); !* Полупрозрачный фон *!*/
   z-index: 1000;
   justify-content: center;
   align-items: flex-start;
+  font-family: var(--font-family), sans-serif;
+  font-size: var(--font-size);
 }
 
 .modal__container {
-  padding: 2rem;
-  display: flex;
-  border-radius: 0.5rem;
-  margin: 3rem 0;
-  width: 475px;
-  gap: 1rem;
   background-color: var(--color-900);
+  border-radius: 0.5rem;
+  margin: 3rem 1rem;
+  width: 475px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
 }
 
-.modal_heading {
+.modal__heading {
   display: flex;
   flex-direction: row;
   gap: 1rem;
   color: var(--color-white);
 }
 
+.modal__title {
+  font-size: 1.2rem;
+  font-weight: var(--font-weight-bold);
+}
+
 .modal__content {
   color: var(--color-white);
+}
+
+@media (min-width: 728px) {
+  .contact {
+    width: 728px;
+  }
+
+  .contact__form {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .contact__form-group--first-name {
+    flex-basis: calc(50% - var(--font-size));
+  }
+
+  .contact__form-group--last-name {
+    flex-basis: calc(50% - var(--font-size) / 2);
+  }
+
+  .contact__form-group--email {
+    flex-basis: 100%;
+  }
+
+  .contact__form-group--message {
+    flex-basis: 100%;
+  }
+
+  .contact__form-group--consent {
+    flex-basis: 100%;
+  }
+
+  .contact__form-fieldset {
+    flex-direction: row;
+    flex: 1;
+    flex-wrap: wrap;
+  }
+
+  .contact__form-label--radio {
+    flex-basis: calc(50% - var(--font-size) / 2);
+  }
+
+  .contact__form-submit {
+    flex-basis: 100%;
+  }
+
+  .message-error {
+    flex-basis: 100%;
+  }
 }
