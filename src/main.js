@@ -1,15 +1,9 @@
 const modalEl = document.getElementById('successModal');
-
-modalEl.addEventListener('click', (e) => {
-  modalEl.style.display = 'none';
-});
-
 const firstNameEl = document.getElementById('firstName');
 const lastNameEl = document.getElementById('lastName');
 const emailEl = document.getElementById('email');
 const messageEl = document.getElementById('message');
 const consentEl = document.getElementById('consent');
-
 const contactFormEl = document.querySelector('.contact__form');
 
 contactFormEl.addEventListener('submit', (e) => {
@@ -103,4 +97,8 @@ contactFormEl.addEventListener('submit', (e) => {
       modalEl.style.display = 'none';
     }, 3000);
   }
+});
+
+modalEl.addEventListener('click', (e) => {
+  modalEl.style.display = 'none';
 });
